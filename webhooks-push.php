@@ -18,14 +18,23 @@ $accessToken = "BBObhSYVl0ErLvWtQ/kgUd4o0izSoQxNdR57tIH3Bf5+Z2vaacs9XrURcvi55LU/
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['userId'];
    #ตัวอย่าง Message Type "Text + Sticker"
-   if($message == "สวัสดี"){
+   if($message == "vbot"){
       $arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+      $arrayPostData['messages'][0]['text'] = "มาแล้วจ้าาาา";
       $arrayPostData['messages'][1]['type'] = "sticker";
       $arrayPostData['messages'][1]['packageId'] = "2";
       $arrayPostData['messages'][1]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
+   }elseif($message == "สวัสดี"){
+	  $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+   }else{
+	  $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "vBot ยังไม่เข้าใจคำถาม";
+	  $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "แต่ vBot สัญญาว่าจะพยายามเรียนรู้ให้มากขึ้น";
    }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
@@ -45,3 +54,5 @@ $accessToken = "BBObhSYVl0ErLvWtQ/kgUd4o0izSoQxNdR57tIH3Bf5+Z2vaacs9XrURcvi55LU/
    echo "OK na";
    
    ?>
+
+
