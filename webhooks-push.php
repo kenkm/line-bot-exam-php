@@ -27,14 +27,16 @@ $accessToken = "BBObhSYVl0ErLvWtQ/kgUd4o0izSoQxNdR57tIH3Bf5+Z2vaacs9XrURcvi55LU/
       $arrayPostData['messages'][1]['stickerId'] = "34";
       pushMsg($arrayHeader,$arrayPostData);
    }elseif($message == "สวัสดี"){
-	  $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+	   pushMsg($arrayHeader,$arrayPostData);
    }else{
-	  $arrayPostData['to'] = $id;
+	$arrayPostData['to'] = $id;
       $arrayPostData['messages'][0]['type'] = "text";
       $arrayPostData['messages'][0]['text'] = "vBot ยังไม่เข้าใจคำถาม";
-	  $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = "แต่ vBot สัญญาว่าจะพยายามเรียนรู้ให้มากขึ้น";
+      $arrayPostData['messages'][1]['type'] = "text";
+      $arrayPostData['messages'][1]['text'] = "แต่ vBot สัญญาว่าจะพยายามเรียนรู้ให้มากขึ้น";
+	   pushMsg($arrayHeader,$arrayPostData);
    }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
